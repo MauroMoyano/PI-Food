@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const {Diet} = require("../db")
 
-router.get('/', (req, res)=>{
-    res.status(200).json("Vamooo nachoo por diet")
+router.get('/', async (req, res) => {
+    const resultant = await Diet.findAll()
+    res.status(200).json(resultant)
 })
 
 module.exports = router;

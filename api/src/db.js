@@ -1,14 +1,14 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const {Sequelize} = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,
+    DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
 const basename = path.basename(__filename);
 
@@ -16,10 +16,10 @@ const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, '/models')) // Esto es un array y voy a filtrarlo en la siguiente linea
-  .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-  .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, '/models', file)));
-  });
+    .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
+    .forEach((file) => {
+        modelDefiners.push(require(path.join(__dirname, '/models', file)));
+    });
 
 // Injectamos la conexion (sequelize) a todos los modelos
 modelDefiners.forEach(model => model(sequelize)); // ------------*-------------se esta conectando a la bdd con los modelos definidos en recipe
@@ -30,12 +30,34 @@ sequelize.models = Object.fromEntries(capsEntries); // ----*----- vuelve a armar
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Recipe, Diet } = sequelize.models;
+const {Recipe, Diet} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
+    Recipe.belongsToMany(Diet, {through: 'RecipeDiet'});
+    Diet.belongsToMany(Recipe, {through: 'RecipeDiet'});
 
-module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importar la conexión { conn } = require('./db.js');
-};
+    module.exports = {
+        ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+        conn: sequelize,     // para importar la conexión { conn } = require('./db.js');
+    };
+
+
+// [.......]create diet
+/*
+let flag = true
+const arrayDiet = [{id: 1, name: "Gluten Free"}, {id: 2, name: "Ketogenic"}, {id: 3, name: "Vegetarian"},
+    {id: 4, name: "Lacto-Vegetarian"}, {id: 5, name: 'Ovo-Vegetarian'}, {id: 6, name: 'Vegan'},
+    {id: 7,name: 'Pescetarian'},
+    {id: 8, name: 'Paleo'}, {id: 9, name: 'Primal'}, {id: 10, name: 'Low FODMAP0'}, {id: 11, name: 'Whole30'}]
+*/
+
+/*if (flag) {
+    flag = !flag;
+    console.log("Cargo los datos?")
+    arrayDiet.map((diet) => {
+        Diet.create(diet).then((res) => console.log(res),()=>{})})
+        // console.log(arrayDiet)
+        // Diet.create({id: 1, name: "Gluten Free"}).then((res)=>{console.log(res)})
+    }*/
+
