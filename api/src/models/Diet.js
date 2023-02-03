@@ -4,11 +4,11 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('diet', {
-    id: {
+   /* id: {
       type: DataTypes.INTEGER,
       // autoIncrement:true,
       primaryKey: true
-    },
+    },*/
     name:{
       type: DataTypes.STRING(100),
       allowNull: false

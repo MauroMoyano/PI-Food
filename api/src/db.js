@@ -32,6 +32,24 @@ sequelize.models = Object.fromEntries(capsEntries); // ----*----- vuelve a armar
 // Para relacionarlos hacemos un destructuring
 const {Recipe, Diet} = sequelize.models;
 
+/*
+let flag = true
+const arrayDiet = [{id: 1, name: "Gluten Free"}, {id: 2, name: "Ketogenic"}, {id: 3, name: "Vegetarian"},
+    {id: 4, name: "Lacto-Vegetarian"}, {id: 5, name: 'Ovo-Vegetarian'}, {id: 6, name: 'Vegan'},
+    {id: 7,name: 'Pescetarian'},
+    {id: 8, name: 'Paleo'}, {id: 9, name: 'Primal'}, {id: 10, name: 'Low FODMAP0'}, {id: 11, name: 'Whole30'}]
+
+if (flag) {
+    flag = !flag;
+    console.log("Cargo los datos?")
+    arrayDiet.map((diet) => {
+        Diet.create(diet).then((res) => console.log(res),()=>{})})
+    // console.log(arrayDiet)
+    // Diet.create({id: 1, name: "Gluten Free"}).then((res)=>{console.log(res)})
+}
+*/
+
+
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
     Recipe.belongsToMany(Diet, {through: 'RecipeDiet'});
@@ -44,20 +62,5 @@ const {Recipe, Diet} = sequelize.models;
 
 
 // [.......]create diet
-/*
-let flag = true
-const arrayDiet = [{id: 1, name: "Gluten Free"}, {id: 2, name: "Ketogenic"}, {id: 3, name: "Vegetarian"},
-    {id: 4, name: "Lacto-Vegetarian"}, {id: 5, name: 'Ovo-Vegetarian'}, {id: 6, name: 'Vegan'},
-    {id: 7,name: 'Pescetarian'},
-    {id: 8, name: 'Paleo'}, {id: 9, name: 'Primal'}, {id: 10, name: 'Low FODMAP0'}, {id: 11, name: 'Whole30'}]
-*/
 
-/*if (flag) {
-    flag = !flag;
-    console.log("Cargo los datos?")
-    arrayDiet.map((diet) => {
-        Diet.create(diet).then((res) => console.log(res),()=>{})})
-        // console.log(arrayDiet)
-        // Diet.create({id: 1, name: "Gluten Free"}).then((res)=>{console.log(res)})
-    }*/
 
