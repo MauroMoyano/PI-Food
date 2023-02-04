@@ -3,7 +3,7 @@ const {Router} = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const recipe = require('./recipe.js')
 const diet = require('./diet.js')
-const home = require("./home.js");
+const home = require('./home.js');
 
 
 const router = Router();

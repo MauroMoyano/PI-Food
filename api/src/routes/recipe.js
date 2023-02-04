@@ -29,10 +29,10 @@ router.get('/:idReceta', async (req, res) => {
 
 // --------------------------- Ruta POST mediante formulario ----------------------------
 router.post('/', async (req, res) => {
-    const {name, summary, healthScore, step, score, image} = req.body;
+    const {name, summary, healthScore, step, score, image, diet} = req.body;
 
     try {
-        const result = await postRecipe(name, summary, healthScore, step, score, image)
+        const result = await postRecipe(name, summary, healthScore, step, score, image, diet)
         res.status(200).json(result)
 
     } catch (error) {

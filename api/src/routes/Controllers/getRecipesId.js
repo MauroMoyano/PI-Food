@@ -1,12 +1,12 @@
 //debo preguntar si id viene a buscar en bdd o en api
-const {API_PSW, URLSPOO} = process.env
+const {API_PSW} = process.env
 const axios = require("axios");
 const {Recipe} = require('../../db')
 
 
 module.exports = getRecipesId = async (id) => {
     if(typeof id === "number" ){
-        let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=1`)
+        let {data} = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?${API_PSW}`)
         const {results} = data
         results.find(element => element === id)
         return {

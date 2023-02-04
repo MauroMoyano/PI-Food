@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT
     },
     diet: {
-      type: DataTypes.INTEGER
+      type: DataTypes.ARRAY(DataTypes.STRING)
     }
-  });
+  },{timestamps: false});
 };
