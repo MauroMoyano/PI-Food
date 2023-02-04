@@ -19,8 +19,10 @@ router.get('/', async (req, res) => {
 // -------------------------- Ruta GET por id --------------------------------------
 router.get('/:idReceta', async (req, res) => {
     try {
+        let result = {};
         const {idReceta} = req.params
-        const result = await getRecipesId(idReceta)
+        if(idReceta.includes("-")) result = await getRecipesId(idReceta)
+        else result = await getRecipesId(parseInt(idReceta))
         res.status(200).json(result)
     } catch (error) {
         res.status(404).json({error: error.message})

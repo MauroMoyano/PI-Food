@@ -12,14 +12,15 @@ module.exports = postRecipe = async (name, summary, healthScore, step, score, im
     diet.forEach(async (element) => {
             const [d, flag] = await Diet.findOrCreate({
             where: {
-                name: element
+                name: element.toLowerCase()
             }
         })
-        console.log("antes de addDiets :", JSON.stringify(d) + "bandera" + flag)
+        // d.name = d.name.toLowerCase()
+        // console.log("antes de addDiets :", JSON.stringify(d) + "bandera" + flag)
         await result.addDiets(d)
         console.log("bandera :", flag)
     })
-
+    return result
 
 }
 

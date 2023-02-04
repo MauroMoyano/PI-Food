@@ -11,7 +11,7 @@ const getRecipes = async (name) => {
     })
     const resultApi = await getRecipesApi(name)//throw Error("No se encontro la receta solicitada")
     if(result.length){
-        return result.concat(resultApi)
+        return [...result, ...resultApi]
     }else{
         if(resultApi.length){
             return resultApi
@@ -24,10 +24,10 @@ const getRecipes = async (name) => {
 
 
 const getRecipesApi = async (name) => {
-    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=1`)
+    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=5`)
     const {results} = data
 
-    // console.log("---------------------------Data--------------------" + JSON.stringify(results))
+    console.log("---------------------------getRecipes--------------------" + JSON.stringify(results))
     let obj = [];
    if(results.length) {
        obj = results.map((element) => {

@@ -13,19 +13,12 @@ const getHome = async () => {
     if (results.length) {
         obj = results.map((element) => {
 
-            // console.log("keyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyys" + Object.keys(element))
-
             return {
                 id: element.id,
                 title: element.title,
-                // summary: element.summary,
                 healthScore: element.healthScore,
                 image: element.image,
-                // dishTypes: element.dishTypes,
-                diets: element.diets,
-                // steps: element.analyzedInstructions[0].steps?.map((element, index)=>{
-                //    return `${index + 1} : ${element['step'] }`
-                // }).join(' ')
+                diets: element.diets
             }
         })
     }
