@@ -17,6 +17,7 @@ const getHome = async () => {
                 id: element.id,
                 title: element.title,
                 healthScore: element.healthScore,
+                summary: element.summary,
                 image: element.image,
                 diets: element.diets
             }
