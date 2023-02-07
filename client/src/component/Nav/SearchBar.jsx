@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function SearchBar() {
 
@@ -10,10 +10,10 @@ export default function SearchBar() {
     // }
     return (
         <div>
-            <button>About</button>
-            {/*<Link to="/About">
 
-            </Link>*/}
+            <Link to="/About">
+                <button>About</button>
+            </Link>
 
             {/*<input type='search' onChange={handleInput} />*/}
             {/*<button onClick={()=>{}}>Agregar</button>*/}
