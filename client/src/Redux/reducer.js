@@ -1,5 +1,26 @@
+import {GET_HOME_CARDS} from './actions'
+
+
 const initialState = {
-    foods: [ {
+    foods: [],
+    diets: []
+}
+
+const rootReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case GET_HOME_CARDS:
+            const {home, auxDiets} = action.payload
+            return {...state, foods: home, diets: auxDiets}
+
+        default:
+            return{ ...state}
+    }
+}
+export default rootReducer;
+
+/*
+
+{
         "id": 782585,
         "title": "Cannellini Bean and Asparagus Salad with Mushrooms",
         "healthScore": 100,
@@ -174,13 +195,6 @@ const initialState = {
                 "vegan"
             ]
         }
-    ]
-}
 
-const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-        default:
-            return{ ...state}
-    }
-}
-export default rootReducer;
+
+ */

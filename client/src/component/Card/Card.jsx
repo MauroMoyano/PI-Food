@@ -8,9 +8,10 @@ border: 1px solid black;
 `
 
 const Card= (props)=>{
+    console.log("titlwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",props.title)
     return(
         <CardDiv>
-            <img src={props.image} alt="Image" />
+            <img src={props.image} alt="Image no encontrada" />
             <p>Name: {props.title}</p>
             <p>Diets: {props.diets}</p>
         </CardDiv>
