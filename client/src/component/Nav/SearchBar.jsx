@@ -11,9 +11,7 @@ export default function SearchBar() {
     return (
         <div>
 
-            <Link to="/About">
-                <button>About</button>
-            </Link>
+
 
             {/*<input type='search' onChange={handleInput} />*/}
             {/*<button onClick={()=>{}}>Agregar</button>*/}

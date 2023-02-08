@@ -13,7 +13,6 @@ export default function Home() {
 
 
     return (<>
-<h1>mmmsssssssssssssssssssssm</h1>
         <CardsConteiner />
     </>)
 }

@@ -13,7 +13,7 @@ const ConDiv = styled.div`
 const CardsConteiner = () => {
 
     const foods = useSelector(state => state.foods)
-    console.log("-----------------", foods)
+
     return (
         <ConDiv>
             {foods.map((food, index) =>{

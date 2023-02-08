@@ -14,9 +14,9 @@ const NavBar = styled.div`
 export default function Nav(){
     return (
         <NavBar>
-            <Link to="/home"><button>Home</button></Link>
-            <Link to="/home"><button>Form</button></Link>
-            <h1>Mauro h1 nav</h1>
+            <Link to="/home"> <button>Home</button> </Link>
+            <Link to="/form"> <button>Form</button> </Link>
+            <Link to="/About"> <button>About</button> </Link>
             <SearchBar />
         </NavBar>
     )

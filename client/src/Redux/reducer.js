@@ -1,9 +1,10 @@
-import {GET_HOME_CARDS} from './actions'
+import {GET_FOOD_ID, GET_HOME_CARDS} from './actions'
 
 
 const initialState = {
     foods: [],
-    diets: []
+    diets: [],
+    foodDetail: {}
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -11,6 +12,9 @@ const rootReducer = (state = initialState, action) => {
         case GET_HOME_CARDS:
             const {home, auxDiets} = action.payload
             return {...state, foods: home, diets: auxDiets}
+
+        case GET_FOOD_ID:
+            return {...state, foodDetail: action.payload}
 
         default:
             return{ ...state}
