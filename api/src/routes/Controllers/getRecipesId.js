@@ -15,7 +15,7 @@ module.exports = getRecipesId = async (id) => {
         return ({
             id: result.id,
             title: result.title,
-            summary: result.summary,
+            summary: result.summary.replace(/<[^>]+>/g, ''),
             healthScore: result.healthScore,
             image: result.image,
             dishTypes: result.dishTypes,

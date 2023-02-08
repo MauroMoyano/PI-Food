@@ -1,14 +1,14 @@
 const {Recipe} = require('../../db')
 const {Diet} = require('../../db')
 
-module.exports = postRecipe = async (name, summary, healthScore, step, score, image, diet) => {
+module.exports = postRecipe = async (title, summary, healthScore, step, score, image, diet) => {
+    if (!summary || !title ) throw Error("La propiedad name o summary no tiene valor")
 
-    if (!summary || !name ) throw Error("La propiedad name o summary no tiene valor")
 
-// console.log(JSON.stringify(Recipe))
+console.log("title",title,"|sum" ,summary,"|hs :_" ,healthScore, "step ",step,"score :", score,"img ", image,"diet ", diet)
 //     return await Recipe.create({name, summary, healthScore, step, score, image})
-    const result = await Recipe.create({name, summary, healthScore, step, score, image, diet})
-
+    const result = await Recipe.create({title, summary, healthScore, step, score, image, diet})
+    console.log("entro a el manejador")
     diet.forEach(async (element) => {
             const [d, flag] = await Diet.findOrCreate({
             where: {
