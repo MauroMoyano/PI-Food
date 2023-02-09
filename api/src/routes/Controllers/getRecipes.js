@@ -6,9 +6,10 @@ const {API_PSW, URLSPOO} = process.env
 const getRecipes = async (name) => {
     let result = await Recipe.findAll({
         where: {
-            name: {[Op.iLike]: `%${name}%`}
+            title: {[Op.iLike]: `%${name}%`}
         }
     })
+
     const resultApi = await getRecipesApi(name)//throw Error("No se encontro la receta solicitada")
     if (result.length) {
         return [...result, ...resultApi]
@@ -28,12 +29,9 @@ const getRecipesApi = async (name) => {
     let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=5`)
     const {results} = data
 
-    console.log("---------------------------getRecipes--------------------" + JSON.stringify(results))
     let obj = [];
     if (results.length) {
         obj = results.map((element) => {
-
-            // console.log("keyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyys" + Object.keys(element))
 
             return {
                 id: element.id,

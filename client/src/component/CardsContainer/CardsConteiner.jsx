@@ -17,7 +17,7 @@ const CardsConteiner = () => {
     return (
         <ConDiv>
             {foods.map((food, index) =>{
-                console.log("foooooddddddddddddddddd", food.diets)
+                // console.log("foooooddddddddddddddddd", food.diets)
                 return <Card
                     key={index}
                     id={food.id}

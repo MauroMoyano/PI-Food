@@ -1,4 +1,4 @@
-import {GET_FOOD_ID, GET_HOME_CARDS} from './actions'
+import {GET_FOOD_ID, GET_HOME_CARDS, PUT_FOOD_BY_NAME} from './actions'
 
 
 const initialState = {
@@ -15,6 +15,9 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_FOOD_ID:
             return {...state, foodDetail: action.payload}
+        case PUT_FOOD_BY_NAME:
+            console.log("respuesta de la api -------",action.payload)
+            return {...state, foods: action.payload}
 
         default:
             return{ ...state}

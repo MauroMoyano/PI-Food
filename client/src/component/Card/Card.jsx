@@ -14,8 +14,8 @@ const CardDiv = styled.div`
 `
 
 const Card = (props) => {
-
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(getFoodId(props.id))
     }, [])

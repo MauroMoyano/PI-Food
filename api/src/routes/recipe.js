@@ -9,6 +9,7 @@ const getRecipesId = require("./Controllers/getRecipesId")
 router.get('/', async (req, res) => {
     try {
         const {name} = req.query
+        console.log("back name : ", name)
         const result = await getRecipes(name)
         res.status(200).json(result)
     } catch (error) {
@@ -31,8 +32,9 @@ router.get('/:idReceta', async (req, res) => {
 
 // --------------------------- Ruta POST mediante formulario ----------------------------
 router.post('/', async (req, res) => {
+
     const {title, summary, healthScore, step, score, image, diet} = req.body;
-    console.log("entro a la ruta")
+
     try {
         const result = await postRecipe(title, summary, healthScore, step, score, image, diet)
         res.status(201).json(result)

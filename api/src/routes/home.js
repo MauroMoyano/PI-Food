@@ -10,12 +10,9 @@ router.get('/', async (req, res) => {
     try {
         const home = await getHome()
         let auxDiets = await Diet.findAll()
-        // console.log("gateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",JSON.stringify(gate))
-        // let auxDiets = []
+
         if(!auxDiets.length) {
-            console.log("entra diet start")
             auxDiets = await getDietStart(home)
-            console.log("Ruta home dietas :", auxDiets)
         }else{
             const result =auxDiets.map((element)=> element.name)
             auxDiets = [...result]

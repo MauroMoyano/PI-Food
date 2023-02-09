@@ -1,14 +1,16 @@
 import React, {useState} from 'react'
 import axios from "axios";
+import {useSelector} from "react-redux";
 
 export default function Form() {
+    const dietTypes = useSelector(state => state.diets)
 
     const [form, setForm] = useState({
         title: "",
         summary: "",
         healthScore: "",
         step: "",
-        diet:["vegan", "sol"]
+        diet: []
     })
 
     const [errors, setErrors] = useState({
@@ -65,9 +67,25 @@ export default function Form() {
     const submitHandler = async (event) => {
         event.preventDefault()
         axios.post("http://localhost:3001/api/recipe", form)
-            .then(res=>alert(JSON.stringify(res)))
-            .catch(error=> console.log(error.message))
-        console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            .then(res => console.log(JSON.stringify(res.data)))
+            .catch(error => console.log(error.message))
+
+    }
+
+    const handleCheck = (event) => {
+        const check = event.target.value
+        let arrayDiet = [...form.diet]
+
+        if (arrayDiet.length) {
+            const aux = arrayDiet.filter((diet) => diet !== check)
+            aux.length === arrayDiet.length //si da verdadera significa que no estaba check dentro de arrayDiet, por lo tanto lo pusheamos
+                ? arrayDiet.push(check)
+                : arrayDiet = [...aux] // si estaba adentro devolvemos el array filtrado
+
+        } else {
+            arrayDiet.push(check)
+        }
+        setForm({...form, diet: arrayDiet})
     }
 
     return (
@@ -94,9 +112,55 @@ export default function Form() {
                 {errors.step && <span>{errors.step}</span>}
             </div>
             <div>
-                <label>Vegan</label>
-                <input type="checkbox"  name="vegan"/>
+                <label>Diet Types : </label>
+                {
+                    dietTypes.map(diet => {
+                        return (
+                            <div key={diet}>
+                                <label>{diet}</label>
+                                <input type="checkbox" name={diet}
+                                       value={diet}
+                                       onChange={handleCheck}/>
+
+                            </div>
+                        )
+
+                    })
+                }
+                <input type="checkbox" name="vegan"/>
             </div>
             <button type="submit">Submit</button>
         </form>)
 }
+
+/////////////////// Nachito
+/*
+ aria-selected={form.diet.includes(diet)}
+const handleChange = (e) => {
+    console.log(inputs.released)
+    const updateInputs = { ...inputs };
+
+    if(e.target.checked){
+        if (e.target.name==='genres'){
+
+            updateInputs.genres=[...updateInputs.genres,e.target.value];
+        }else if(e.target.name==='platforms'){
+
+            updateInputs.platforms=[...updateInputs.platforms,e.target.value];
+        }
+    }else{
+        if(e.target.name==='genres'){
+            updateInputs.genres=updateInputs.genres.filter(
+                (value)=>value!==e.target.value
+            );
+        }else if(e.target.name==='platforms'){
+            updateInputs.platforms=updateInputs.platforms.filter(
+                (value)=>value!==e.target.value
+            );
+        }else{
+            updateInputs[e.target.name]=e.target.value;
+        }
+    }
+
+    setInputs(updateInputs);
+};*/

@@ -18,7 +18,7 @@ console.log("title",title,"|sum" ,summary,"|hs :_" ,healthScore, "step ",step,"s
         // d.name = d.name.toLowerCase()
         // console.log("antes de addDiets :", JSON.stringify(d) + "bandera" + flag)
         await result.addDiets(d)
-        console.log("bandera :", flag)
+        // console.log("bandera :", flag)
     })
     return result
 

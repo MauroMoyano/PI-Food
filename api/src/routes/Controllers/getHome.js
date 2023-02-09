@@ -6,7 +6,7 @@ const {API_PSW, URLSPOO} = process.env
 const getHome = async () => {
     let aux = await Recipe.findAll()
 
-    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=1`)
+    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=5`)
     const {results} = data
 
     let obj = [];
