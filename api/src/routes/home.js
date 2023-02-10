@@ -8,10 +8,10 @@ const { Diet } = require('../db')
 router.get('/', async (req, res) => {
 
     try {
-        console.log("esta entrando en la ruta")
+        // console.log("esta entrando en la ruta")
         const home = await getHome()
         let auxDiets = await Diet.findAll()
-console.log("bdd --------------- ", auxDiets)////////////////////////////////
+// console.log("bdd --------------- ", auxDiets)
         if(!auxDiets.length) {
             auxDiets = await getDietStart(home)
         }else{

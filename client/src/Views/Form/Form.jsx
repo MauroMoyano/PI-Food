@@ -1,9 +1,14 @@
 import React, {useState} from 'react'
 import axios from "axios";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {createRecipe} from "../../Redux/actions";
+import {useHistory} from "react-router-dom";
+
 
 export default function Form() {
     const dietTypes = useSelector(state => state.diet)
+    const dispatch = useDispatch()
+    const history = useHistory()
 
     const [form, setForm] = useState({
         title: "",
@@ -22,14 +27,14 @@ export default function Form() {
 
     const validate = (form) => {
         const regTitle = /^[^0-9]{1,100}$/
-        console.log("pasando por validate")
+        // console.log("pasando por validate")
         let errors = {}
 
         if (regTitle.test(form.title)) {
-            console.log("pasando por validate              if")
+            // console.log("pasando por validate              if")
             errors = {...errors, title: ""}
         } else {
-            console.log("pasando por validate              else")
+            // console.log("pasando por validate              else")
             errors = {...errors, title: "Hay errores en el titulo."}
         }
 
@@ -66,10 +71,9 @@ export default function Form() {
 
     const submitHandler = async (event) => {
         event.preventDefault()
-        axios.post("http://localhost:3001/api/recipe", form)
-            .then(res => console.log(JSON.stringify(res.data)))
-            .catch(error => console.log(error.message))
-
+        const result = await axios.post("http://localhost:3001/api/recipe", form)
+        dispatch(createRecipe(result.data))
+        history.push('/home')
     }
 
     const handleCheck = (event) => {
@@ -129,7 +133,9 @@ export default function Form() {
                 }
                 <input type="checkbox" name="vegan"/>
             </div>
-            <button type="submit">Submit</button>
+
+                <button type="submit">Submit</button>
+
         </form>)
 }
 

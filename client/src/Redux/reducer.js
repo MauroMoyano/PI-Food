@@ -1,4 +1,4 @@
-import {DELETE_STATE, GET_FOOD_ID, GET_HOME_CARDS, PUT_FOOD_BY_NAME} from './actions'
+import {CREATE_RECIPE, DELETE_STATE, GET_FOOD_ID, GET_HOME_CARDS, PUT_FOOD_BY_NAME} from './actions'
 
 
 const initialState = {
@@ -23,6 +23,9 @@ const rootReducer = (state = initialState, action) => {
 
         case DELETE_STATE:
             return {...state, foods: action.payload}
+
+        case CREATE_RECIPE:
+            return {...state, foods: [action.payload, ...state.foods]}
 
         default:
             return{ ...state}

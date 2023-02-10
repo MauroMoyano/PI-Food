@@ -34,7 +34,7 @@ router.get('/:idReceta', async (req, res) => {
 router.post('/', async (req, res) => {
 
     const {title, summary, healthScore, step, score, image, diet} = req.body;
-console.log("esta entrando a la ruta")
+console.log("esta entrando a la ruta", diet)
     try {
         const result = await postRecipe(title, summary, healthScore, step, score, image, diet)
         res.status(201).json(result)

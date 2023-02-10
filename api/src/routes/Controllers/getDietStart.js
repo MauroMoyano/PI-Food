@@ -9,7 +9,7 @@ const getDietStart = async (recipes) => {
     })
     const result = [...new Set(arrayDiets)]; // ¡devuelvo un nuevo arreglo eliminando los elementos repetidos!
     result.forEach(async (element) => {
-        console.log("que es element ", element)
+        // console.log("que es element ", element)
         await Diet.create({name: element})
     })
 

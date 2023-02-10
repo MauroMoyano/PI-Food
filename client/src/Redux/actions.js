@@ -3,6 +3,7 @@ export const GET_HOME_CARDS = "GET_HOME_CARDS"
 export const GET_FOOD_ID = "GET_FOOD_ID"
 export const PUT_FOOD_BY_NAME = "PUT_FOOD_BY_NAME"
 export const DELETE_STATE = "DELETE_STATE"
+export const CREATE_RECIPE = "CREATE_RECIPE"
 // const axios = require('axios')
 
 export const getHomeCards = ()=>{
@@ -28,8 +29,8 @@ export const getFoodId = (id)=> {
         }
     }
 
-    export const postRecipe = ()=>{
-
+    export const createRecipe = (obj)=>{
+        return { type: CREATE_RECIPE, payload: obj }
     }
 
     export const deleteState = ()=>{
