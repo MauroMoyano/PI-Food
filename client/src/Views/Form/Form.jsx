@@ -3,7 +3,7 @@ import axios from "axios";
 import {useSelector} from "react-redux";
 
 export default function Form() {
-    const dietTypes = useSelector(state => state.diets)
+    const dietTypes = useSelector(state => state.diet)
 
     const [form, setForm] = useState({
         title: "",

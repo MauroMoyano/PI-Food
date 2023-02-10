@@ -23,7 +23,7 @@ const CardsConteiner = () => {
                     id={food.id}
                     title={food.title}
                     image={food.image}
-                    diets={food.diets}
+                    diet={food.diet}
                 />
             })}
         </ConDiv>

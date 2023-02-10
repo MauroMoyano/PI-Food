@@ -12,12 +12,11 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Mauro</h1>
             {location.pathname !== '/' && <Nav/>}
             <Route path='/home' component = { Home } />
             <Route exact path='/' render={ ()=> <Landing /> } />
             <Route path='/form' component={Form} />
-            <Route path='/detail' component={Detail} />
+            <Route path='/detail/:id' component={Detail} />
         </div>
     );
 }

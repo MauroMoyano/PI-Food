@@ -12,7 +12,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
     router.use('/recipe', recipe);
     router.use('/diet', diet);
-    router.use('/recipes', home);
+    router.use('/home', home);
 
 
 module.exports = router;

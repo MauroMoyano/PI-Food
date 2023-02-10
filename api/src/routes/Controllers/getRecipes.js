@@ -39,7 +39,7 @@ const getRecipesApi = async (name) => {
                 healthScore: element.healthScore,
                 summary: element.summary,
                 image: element.image,
-                diets: element.diets,
+                diet: element.diet,
             }
         })
     }
