@@ -10,14 +10,14 @@ const ConDiv = styled.div`
   flex-wrap: wrap;
   gap: 1em;
 `
-const CardsConteiner = () => {
+const CardsConteiner = ({foods}) => {
 
-    const foods = useSelector(state => state.foods)
-
+    // const foods = useSelector(state => state.foods)
+console.log("fods dentro de cards conteiner", foods)
     return (
         <ConDiv>
-            {foods.map((food, index) =>{
-                // console.log("foooooddddddddddddddddd", food.diets)
+            {foods?.map((food, index) =>{
+                console.log("foooooddddddddddddddddd", food.image)
                 return <Card
                     key={index}
                     id={food.id}

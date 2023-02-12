@@ -7,7 +7,7 @@ const getHome = async () => {
     // console.log("esta entrando a la funcion controller getHome")
     let aux = await Recipe.findAll()
     // console.log("BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
-    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=5`)
+    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=35`)
     const {results} = data
 
     let obj = [];

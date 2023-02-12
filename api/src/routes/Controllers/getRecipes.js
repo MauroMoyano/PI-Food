@@ -26,10 +26,11 @@ const getRecipes = async (name) => {
 
 
 const getRecipesApi = async (name) => {
-    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=5`)
+    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=25`)
     const {results} = data
 
     let obj = [];
+    console.log("result en controller ", results)
     if (results.length) {
         obj = results.map((element) => {
 
@@ -39,7 +40,7 @@ const getRecipesApi = async (name) => {
                 healthScore: element.healthScore,
                 summary: element.summary,
                 image: element.image,
-                diet: element.diet,
+                diet: element.diets,
             }
         })
     }

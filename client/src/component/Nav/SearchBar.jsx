@@ -15,7 +15,7 @@ export default function SearchBar() {
     }
     const handleClick = (event) => {
         event.preventDefault()
-        console.log("searchbar  -----------", recipeName)
+        // console.log("searchbar  -----------", recipeName)
         dispatch(putFoodByName(recipeName))
         setRecipeName("")
     }

@@ -1,32 +1,49 @@
-import CardsConteiner from "../../component/CardsContainer/CardsConteiner";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
-import {getHomeCards} from "../../Redux/actions";
+import {dishTypes, getHomeCards, orderRecipes, OrderTitle} from "../../Redux/actions";
+import Paginated from "../../component/Paginated/Paginated"
+import CardsConteiner from "../../component/CardsContainer/CardsConteiner";
 
 export default function Home() {
     // const foods = useSelector(state => state.foods)
     const dispatch = useDispatch()
-    const foods = useSelector(state=>state.foods)
+    const diets = useSelector(state => state.diet)
 
-    useEffect(()=>{
-        if(!foods.length) dispatch(getHomeCards())
-    },[foods])
+    const handleOrder = (event) => {
+        dispatch(orderRecipes(event.target.value))
+    }
 
+    const handleOrderTitle = (event) => {
+        dispatch(OrderTitle(event.target.value))
+    }
+
+    const handleFilter = (event) => {
+        dispatch(dishTypes(event.target.value))
+    }
 
     return (<>
         <div>
-            <select onChange={{/*handleOrder*/}}>
-                <option value="Ascendente" >Ascendente</option>
-                <option value="Descendente" >Descendente</option>
+            <select onChange={handleOrderTitle}>
+                <option disabled selected>Title</option>
+                <option value="Ascendente">Ascendente</option>
+                <option value="Descendente">Descendente</option>
             </select>
-            <select onChange={{/*handleFilter*/}}>
-                <option value="Gluten Free" >Gluten Free</option>
-                <option value="Female" >Female</option>
-                <option value="Genderless" >Genderless</option>
-                <option value="unknown" >unknown</option>
+            <select onChange={handleOrder}>
+                <option disabled selected>Health Score</option>
+                <option value="Ascendente">Ascendente</option>
+                <option value="Descendente">Descendente</option>
+            </select>
+            <select onChange={handleFilter}>
+                <option disabled selected>Title</option>
+                {
+                    diets.map((d, index)=>{
+                        return <option value={d} key={index}>{d}</option>
+                    })
+                }
             </select>
         </div>
-        <CardsConteiner />
+        <Paginated />
+        {/*<CardsConteiner/>*/}
     </>)
 }

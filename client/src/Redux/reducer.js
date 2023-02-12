@@ -1,25 +1,35 @@
-import {CREATE_RECIPE, DELETE_STATE, GET_FOOD_ID, GET_HOME_CARDS, PUT_FOOD_BY_NAME} from './actions'
+import {
+    CREATE_RECIPE, CURRENT_PAGE,
+    DELETE_STATE,
+    DISH_TYPES,
+    GET_FOOD_ID,
+    GET_HOME_CARDS,
+    ORDER_RECIPES_HEALTH, ORDER_TITLE,
+    PUT_FOOD_BY_NAME
+} from './actions'
 
 
 const initialState = {
     foods: [],
+    foodsCopy: [],
     diet: [],
-    foodDetail: {}
+    foodDetail: {},
+    currentPage: 0
 }
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_HOME_CARDS:
             const {home, auxDiets} = action.payload
-            return {...state, foods: home, diet: auxDiets}
+            return {...state, foods: home, diet: auxDiets, foodsCopy: home, currentPage:0}
 
         case GET_FOOD_ID:
-            console.log("reducerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+            // console.log("reducerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", action.payload)
             return {...state, foodDetail: action.payload}
 
         case PUT_FOOD_BY_NAME:
-            console.log("respuesta de la api -------",action.payload)
-            return {...state, foods: action.payload}
+            console.log("respuesta de la api -------", action.payload)
+            return {...state, foods: action.payload, currentPage: 0}
 
         case DELETE_STATE:
             return {...state, foods: action.payload}
@@ -27,8 +37,39 @@ const rootReducer = (state = initialState, action) => {
         case CREATE_RECIPE:
             return {...state, foods: [action.payload, ...state.foods]}
 
+        case ORDER_RECIPES_HEALTH:
+            return {
+                ...state, foods: (action.payload === 'Ascendente')
+                    ? [...state.foods.sort((a, b) => a.healthScore - b.healthScore)]
+                    : [...state.foods.sort((a, b) => b.healthScore - a.healthScore)],
+                currentPage:0
+            }
+
+        case ORDER_TITLE:
+            return {
+                ...state, foods: (action.payload === 'Ascendente')
+                    ? [...state.foods.sort((a, b) => a.title.localeCompare(b.title))]
+                    : [...state.foods.sort((a, b) => b.title.localeCompare(a.title))],
+                foodsCopy: (action.payload === 'Ascendente')
+                    ? [...state.foodsCopy.sort((a, b) => a.title.localeCompare(b.title))]
+                    : [...state.foodsCopy.sort((a, b) => b.title.localeCompare(a.title))],
+                currentPage:0
+
+            }
+
+        case DISH_TYPES:
+            state.foods = state.foodsCopy
+            return {
+                ...state,
+                foods: state.foods.filter((food)=>food.diet.some((d) => d === action.payload)),
+                currentPage: 0
+                // foods: state.foods.filter((food) => food.diet.map((d) => d === action.payload))
+            }
+
+        case CURRENT_PAGE:
+            return {...state, currentPage: action.payload}
         default:
-            return{ ...state}
+            return {...state}
     }
 }
 export default rootReducer;
