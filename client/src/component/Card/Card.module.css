@@ -1,0 +1,15 @@
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+.hscore{
+    background-color: darkolivegreen;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    transition: 1s;
+    filter: drop-shadow(0 0 50px #7f9440);
+}

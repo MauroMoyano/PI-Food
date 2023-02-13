@@ -1,0 +1,19 @@
+.DivCont {
+    /*url("../../assets/fondo de detail.jpg")*/
+    background: no-repeat rgba(122, 95, 91, 0.55);
+    width: 80%;
+    margin: 10%;
+    justify-content: center;
+    border-radius: 50px;
+}
+img{
+    padding: 30px;
+    border-radius: 100px;
+}
+p{
+    color: rgb(0, 0, 0);
+    font-style: italic;
+    margin: 30px;
+    font-size: 1.2em;
+    text-shadow: 6px 4px 5px rgba(0, 0, 0, 0.43);
+}

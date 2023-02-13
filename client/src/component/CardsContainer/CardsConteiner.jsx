@@ -1,14 +1,14 @@
 import Card from "../Card/Card";
 import styled from "styled-components";
-import {useSelector} from "react-redux";
 
 const ConDiv = styled.div`
-  border: 1px solid black;
   display: flex;
   flex-direction: row;
   border-radius: 15px;
   flex-wrap: wrap;
   gap: 1em;
+  justify-content: center;
+  padding: 0 20px 4px;
 `
 const CardsConteiner = ({foods}) => {
 
@@ -24,6 +24,7 @@ console.log("fods dentro de cards conteiner", foods)
                     title={food.title}
                     image={food.image}
                     diet={food.diet}
+                    healthScore={food.healthScore}
                 />
             })}
         </ConDiv>

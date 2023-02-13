@@ -7,7 +7,7 @@ const getHome = async () => {
     // console.log("esta entrando a la funcion controller getHome")
     let aux = await Recipe.findAll()
     // console.log("BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
-    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=35`)
+    let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=100`)
     const {results} = data
 
     let obj = [];
@@ -20,7 +20,7 @@ const getHome = async () => {
                 healthScore: element.healthScore,
                 summary: element.summary.replace(/<[^>]+>/g, ''),
                 image: element.image,
-                diet: element.diets
+                diet: element.diets? element.diets: "steps not found"
             }
         })
     }

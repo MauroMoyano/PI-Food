@@ -25,12 +25,23 @@ export default function Paginated() {
         dispatch(currentPageHandler(event.target.value))
     }
 
+    const handlePrevClick = () => {
+
+        currentPage > 0 && dispatch(currentPageHandler(currentPage - 1))
+    };
+
+    const handleNextClick = () => {
+
+        currentPage < page.length -1 && dispatch(currentPageHandler(currentPage + 1))
+    }
+
     return (
         <div>
+            <button onClick={handlePrevClick}> Back </button>
             {
-                page.map((p, indice)=> <button onClick={handlePage} value={indice}>{indice + 1 }</button>)
+                page.map((p, index)=> <button className="btn" onClick={handlePage} value={index}>{index + 1 }</button>)
             }
-
+            <button onClick={handleNextClick}> Next </button>
             <CardsConteiner foods={page[currentPage]} />
         </div>
     )

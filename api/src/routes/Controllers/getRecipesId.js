@@ -19,7 +19,7 @@ module.exports = getRecipesId = async (id) => {
             healthScore: result.healthScore,
             image: result.image,
             dishTypes: result.dishTypes,
-            diet: result.diet,
+            diet: result.diets,
             steps: result.analyzedInstructions[0].steps?.map((element, index) => {
                 return `${index + 1} : ${element['step']}`
             }).join(' ')
