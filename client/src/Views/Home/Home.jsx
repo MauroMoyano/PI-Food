@@ -1,12 +1,10 @@
-import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
-import {dishTypes, getHomeCards, orderRecipes, OrderTitle} from "../../Redux/actions";
+import {dishTypes, orderRecipes, OrderTitle} from "../../Redux/actions";
 import Paginated from "../../component/Paginated/Paginated"
-import CardsConteiner from "../../component/CardsContainer/CardsConteiner";
+import styled from "./Home.module.css"
 
 export default function Home() {
-    // const foods = useSelector(state => state.foods)
     const dispatch = useDispatch()
     const diets = useSelector(state => state.diet)
 
@@ -23,7 +21,7 @@ export default function Home() {
     }
 
     return (<>
-        <div>
+        <div className={styled.div}>
             <select onChange={handleOrderTitle}>
                 <option disabled selected>Title</option>
                 <option value="Ascendente">Ascendente</option>
@@ -44,6 +42,5 @@ export default function Home() {
             </select>
         </div>
         <Paginated />
-        {/*<CardsConteiner/>*/}
     </>)
 }

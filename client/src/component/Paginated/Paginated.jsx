@@ -22,7 +22,7 @@ export default function Paginated() {
 
     console.log(page, "foodsssssssssssssssssssssssssssss en paginado")
     const handlePage = (event)=>{
-        dispatch(currentPageHandler(event.target.value))
+        dispatch(currentPageHandler(parseInt(event.target.value)))
     }
 
     const handlePrevClick = () => {

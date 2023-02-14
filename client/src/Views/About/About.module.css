@@ -1,0 +1,22 @@
+.divGral{
+    color: rgb(0, 0, 0);
+    font-style: italic;
+    margin: 30px;
+    font-size: 1.2em;
+    text-shadow: 6px 4px 5px rgba(0, 0, 0, 0.43);
+}
+.btn {
+    padding: 10px 20px;
+    background-color: #bac79d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.cont {
+    background: no-repeat rgba(122, 95, 91, 0.55);
+    width: 80%;
+    margin: 4%;
+    justify-content: center;
+    border-radius: 50px;
+}

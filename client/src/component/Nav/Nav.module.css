@@ -1,0 +1,18 @@
+.navBar {
+    display: flex;
+    justify-content: center;
+    border: solid rgba(172, 190, 224, 0);
+    background: rgba(231, 241, 239, 0.3);
+    width: 90%;
+    height: 40px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #bac79d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3px;
+}
+

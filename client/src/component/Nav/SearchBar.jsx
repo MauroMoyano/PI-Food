@@ -1,13 +1,14 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {putFoodByName, deleteState} from "../../Redux/actions";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import styled from "./SearchBar.module.css";
 
 // import {useHistory} from "react-router-dom";
 
 export default function SearchBar() {
     const dispatch = useDispatch()
-    // const history = useHistory()
+    const history = useHistory()
     const [recipeName, setRecipeName] = React.useState("")
 
     const handleInput = (event) => {
@@ -15,9 +16,9 @@ export default function SearchBar() {
     }
     const handleClick = (event) => {
         event.preventDefault()
-        // console.log("searchbar  -----------", recipeName)
         dispatch(putFoodByName(recipeName))
         setRecipeName("")
+        history.push("/home")
     }
     const reset = () => {
         dispatch(deleteState())
@@ -26,10 +27,10 @@ export default function SearchBar() {
         <div>
             <input type='search' value={recipeName} onChange={handleInput}/>
             <Link to="/home">
-                <button type='submit' onClick={handleClick}>Search Recipe</button>
+                <button type='submit' className={styled.btn} onClick={handleClick}>Search Recipe</button>
             </Link>
             <Link to="/home">
-                <button onClick={reset}>Delete Search</button>
+                <button onClick={reset} className={styled.btn} >Delete Search</button>
             </Link>
 
         </div>

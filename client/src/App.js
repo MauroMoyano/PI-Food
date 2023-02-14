@@ -5,6 +5,7 @@ import Form from "./Views/Form/Form";
 import Home from './Views/Home/Home'
 import Landing from './Views/Landing/Landing'
 import {Switch, Route, useLocation, useNavigate} from "react-router-dom";
+import About from "./Views/About/About";
 
 function App() {
 
@@ -12,11 +13,12 @@ function App() {
 
     return (
         <div className="App">
-            {location.pathname !== '/' && <Nav/>}
+           <div className="nav"> {location.pathname !== '/' && <Nav/>}</div>
             <Route path='/home' component = { Home } />
             <Route exact path='/' render={ ()=> <Landing /> } />
             <Route path='/form' component={Form} />
             <Route path='/detail/:id' component={Detail} />
+            <Route path='/about' component={About} />
         </div>
     );
 }
