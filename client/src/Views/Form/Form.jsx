@@ -3,6 +3,7 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {createRecipe} from "../../Redux/actions";
 import {useHistory} from "react-router-dom";
+import styled from "./Form.module.css"
 
 
 export default function Form() {
@@ -134,7 +135,7 @@ export default function Form() {
                 <input type="checkbox" name="vegan"/>
             </div>
 
-                <button type="submit">Submit</button>
+                <button className={styled.submit} type="submit">Submit</button>
 
         </form>)
 }

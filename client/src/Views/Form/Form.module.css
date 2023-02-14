@@ -1,0 +1,17 @@
+.submit{
+    padding: 10px 20px;
+    background-color: #bac79d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.inp{
+    padding: "10px 20px",
+    /*backgroundColor: "#4CAF50",*/
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+}

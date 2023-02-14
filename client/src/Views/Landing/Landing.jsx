@@ -1,14 +1,17 @@
 import {Link} from "react-router-dom";
-
+import landing from "../../assets/landing.jpg"
+import styled from "./Landing.module.css"
 
 export default function Landing() {
     // const navigate = useNavigate()
 
 
     return (<>
-        <h1>landing</h1>
         <Link to="/home">
-            <button>Home</button>
+            <div>
+                <img src={landing} />
+            </div>
+            <button className={styled.land}>Home</button>
         </Link>
     </>)
 }

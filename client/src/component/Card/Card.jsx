@@ -7,7 +7,7 @@ const CardDiv = styled.div`
 
   width: 30%;
   //height: fit-content;
-  border: solid black 3px;
+  //border: solid black 3px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@ const CardDiv = styled.div`
   background: rgba(114, 117, 122, 0.71);
 
   img {
-    border-radius: 10px;
+    border-radius: 30px;
     margin: 15px;
     display: flex;
     width: 300px;
@@ -29,6 +29,8 @@ const CardDiv = styled.div`
 
     img {
       transition: 1s;
+      width: 390px;
+      height: 312px;
       border-radius: 250px;
       filter: drop-shadow(0 0 50px #7f9440);
     }
