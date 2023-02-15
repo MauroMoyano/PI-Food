@@ -92,36 +92,37 @@ export default function Form() {
         }
         setForm({...form, diet: arrayDiet})
     }
-
     return (
-        <form onSubmit={submitHandler}>
-            <div>
-                <label>Title : </label>
-                <input type="text" value={form.title} onChange={changeHandler} name="title"/>
-                {errors.title && <span>{errors.title}</span>}
+        <form onSubmit={submitHandler} className={styled.form}>
+            <div className={styled.inputs}>
+                <div>
+                    <label>Title : </label>
+                    <input type="text" value={form.title} onChange={changeHandler} name="title"/>
+                    {errors.title && <span>{errors.title}</span>}
+                </div>
+                <div>
+                    <label>Summary : </label>
+                    <input type="text" value={form.summary.replace(/<[^>]+>/g, '')} onChange={changeHandler}
+                           name="summary"/>
+                    {errors.summary && <span>{errors.summary}</span>}
+                </div>
+                <div>
+                    <label>Health Score : </label>
+                    <input type="text" value={form.healthScore} onChange={changeHandler} name="healthScore"/>
+                    {errors.healthScore && <span>{errors.healthScore}</span>}
+                </div>
+                <div>
+                    <label>Steps : </label>
+                    <input type="text" value={form.step} onChange={changeHandler} name="step"/>
+                    {errors.step && <span>{errors.step}</span>}
+                </div>
             </div>
-            <div>
-                <label>Summary : </label>
-                <input type="text" value={form.summary.replace(/<[^>]+>/g, '')} onChange={changeHandler}
-                       name="summary"/>
-                {errors.summary && <span>{errors.summary}</span>}
-            </div>
-            <div>
-                <label>Health Score : </label>
-                <input type="text" value={form.healthScore} onChange={changeHandler} name="healthScore"/>
-                {errors.healthScore && <span>{errors.healthScore}</span>}
-            </div>
-            <div>
-                <label>Steps : </label>
-                <input type="text" value={form.step} onChange={changeHandler} name="step"/>
-                {errors.step && <span>{errors.step}</span>}
-            </div>
-            <div>
+            <div className={styled.diets}>
                 <label>Diet Types : </label>
                 {
                     dietTypes.map(diet => {
                         return (
-                            <div key={diet}>
+                            <div className={styled.check} key={diet}>
                                 <label>{diet}</label>
                                 <input type="checkbox" name={diet}
                                        value={diet}
@@ -132,42 +133,9 @@ export default function Form() {
 
                     })
                 }
-                <input type="checkbox" name="vegan"/>
             </div>
 
-                <button className={styled.submit} type="submit">Submit</button>
+            <button className={styled.submit} type="submit">Submit</button>
 
         </form>)
 }
-
-/////////////////// Nachito
-/*
- aria-selected={form.diet.includes(diet)}
-const handleChange = (e) => {
-    console.log(inputs.released)
-    const updateInputs = { ...inputs };
-
-    if(e.target.checked){
-        if (e.target.name==='genres'){
-
-            updateInputs.genres=[...updateInputs.genres,e.target.value];
-        }else if(e.target.name==='platforms'){
-
-            updateInputs.platforms=[...updateInputs.platforms,e.target.value];
-        }
-    }else{
-        if(e.target.name==='genres'){
-            updateInputs.genres=updateInputs.genres.filter(
-                (value)=>value!==e.target.value
-            );
-        }else if(e.target.name==='platforms'){
-            updateInputs.platforms=updateInputs.platforms.filter(
-                (value)=>value!==e.target.value
-            );
-        }else{
-            updateInputs[e.target.name]=e.target.value;
-        }
-    }
-
-    setInputs(updateInputs);
-};*/

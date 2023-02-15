@@ -68,7 +68,11 @@ const Card = (props) => {
                 <Link to={`/detail/${props.id}`}>
                     <NameP>Name: {props.title}</NameP>
                 </Link>
-            <DietP>Diets: {props.diet} </DietP>
+            <DietP>Diets: {
+                props.diet.map(d=>{
+                    return <span> {d} </span>
+                })
+            } </DietP>
 
         </CardDiv>
     )

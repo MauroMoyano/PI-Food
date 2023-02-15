@@ -1,4 +1,4 @@
-.submit{
+.submit {
     padding: 10px 20px;
     background-color: #bac79d;
     color: white;
@@ -7,11 +7,40 @@
     cursor: pointer;
 }
 
-.inp{
+input {
     padding: 10px 20px;
-    /*backgroundColor: "#4CAF50",*/
-    color: white;
+    margin: 10px;
+    color: #1d3412;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.inputs {
+    margin-top: 2%;
+    height: 10%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: start;
+
+}
+
+.check {
+display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+label {
+    display: flex;
+    background: no-repeat rgba(122, 95, 91, 0.55);
+}
+
+.form{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
 }

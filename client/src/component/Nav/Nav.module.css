@@ -1,6 +1,7 @@
 .navBar {
     display: flex;
     justify-content: center;
+    align-content: center;
     border: solid rgba(172, 190, 224, 0);
     background: rgba(231, 241, 239, 0.3);
     width: 90%;
@@ -8,6 +9,7 @@
 }
 button {
     padding: 10px 20px;
+    align-content: center;
     background-color: #bac79d;
     color: white;
     border: none;
