@@ -3,7 +3,7 @@ import {
     DELETE_STATE,
     DISH_TYPES,
     GET_FOOD_ID,
-    GET_HOME_CARDS,
+    GET_HOME_CARDS, LOADER,
     ORDER_RECIPES_HEALTH, ORDER_TITLE,
     PUT_FOOD_BY_NAME
 } from './actions'
@@ -14,14 +14,15 @@ const initialState = {
     foodsCopy: [],
     diet: [],
     foodDetail: {},
-    currentPage: 0
+    currentPage: 0,
+    loader: true
 }
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_HOME_CARDS:
             const {home, auxDiets} = action.payload
-            return {...state, foods: home, diet: auxDiets, foodsCopy: home, currentPage:0}
+            return {...state, foods: home, diet: auxDiets, foodsCopy: home, currentPage: 0}
 
         case GET_FOOD_ID:
             // console.log("reducerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", action.payload)
@@ -42,7 +43,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state, foods: (action.payload === 'Ascendente')
                     ? [...state.foods.sort((a, b) => a.healthScore - b.healthScore)]
                     : [...state.foods.sort((a, b) => b.healthScore - a.healthScore)],
-                currentPage:0
+                currentPage: 0
             }
 
         case ORDER_TITLE:
@@ -53,7 +54,7 @@ const rootReducer = (state = initialState, action) => {
                 foodsCopy: (action.payload === 'Ascendente')
                     ? [...state.foodsCopy.sort((a, b) => a.title.localeCompare(b.title))]
                     : [...state.foodsCopy.sort((a, b) => b.title.localeCompare(a.title))],
-                currentPage:0
+                currentPage: 0
 
             }
 
@@ -61,13 +62,22 @@ const rootReducer = (state = initialState, action) => {
             state.foods = state.foodsCopy
             return {
                 ...state,
-                foods: state.foods.filter((food)=>food.diet.some((d) => d === action.payload)),
+                foods: state.foods.filter((food) => food.diet.some((d) => d === action.payload)),
                 currentPage: 0
                 // foods: state.foods.filter((food) => food.diet.map((d) => d === action.payload))
             }
 
         case CURRENT_PAGE:
             return {...state, currentPage: action.payload}
+
+        case LOADER:
+            return {
+                ...state, loader: state.loader
+                    ? state.loader = false
+                    : state.loader = true
+            }
+
+
         default:
             return {...state}
     }

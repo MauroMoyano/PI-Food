@@ -8,6 +8,8 @@ export default function Home() {
     const dispatch = useDispatch()
     const diets = useSelector(state => state.diet)
 
+
+
     const handleOrder = (event) => {
         dispatch(orderRecipes(event.target.value))
     }
@@ -21,6 +23,7 @@ export default function Home() {
     }
 
     return (<>
+
         <div className={styled.div}>
             <select onChange={handleOrderTitle}>
                 <option disabled selected>Title</option>
@@ -35,7 +38,7 @@ export default function Home() {
             <select onChange={handleFilter}>
                 <option disabled selected>Title</option>
                 {
-                    diets.map((d, index)=>{
+                    diets.map((d, index) => {
                         return <option value={d} key={index}>{d}</option>
                     })
                 }
@@ -43,4 +46,5 @@ export default function Home() {
         </div>
         <Paginated />
     </>)
+
 }

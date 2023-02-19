@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+export const LOADER = "LOADER"
 export const GET_HOME_CARDS = "GET_HOME_CARDS"
 export const GET_FOOD_ID = "GET_FOOD_ID"
 export const PUT_FOOD_BY_NAME = "PUT_FOOD_BY_NAME"
@@ -55,4 +55,8 @@ export const OrderTitle = (value) => {
 }
  export const currentPageHandler = (value) =>{
     return {type: CURRENT_PAGE, payload: value}
+ }
+
+ export const Loading = ()=>{
+    return {type: LOADER}
  }

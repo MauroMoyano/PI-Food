@@ -13,7 +13,7 @@ const ConDiv = styled.div`
 const CardsConteiner = ({foods}) => {
 
     // const foods = useSelector(state => state.foods)
-console.log("fods dentro de cards conteiner", foods)
+// console.log("fods dentro de cards conteiner", foods)
     return (
         <ConDiv>
             {foods?.map((food, index) =>{
