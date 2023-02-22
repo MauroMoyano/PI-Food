@@ -4,7 +4,7 @@ import Detail from "./Views/Detail/Detail";
 import Form from "./Views/Form/Form";
 import Home from './Views/Home/Home'
 import Landing from './Views/Landing/Landing'
-import {Switch, Route, useLocation, useNavigate} from "react-router-dom";
+import {Route, useLocation} from "react-router-dom";
 import About from "./Views/About/About";
 
 function App() {
