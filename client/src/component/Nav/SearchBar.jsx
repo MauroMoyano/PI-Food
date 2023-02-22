@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {putFoodByName, deleteState} from "../../Redux/actions";
+import {putFoodByName, deleteState, Loading} from "../../Redux/actions";
 import {Link, useHistory} from "react-router-dom";
 import styled from "./SearchBar.module.css";
 
@@ -21,6 +21,7 @@ export default function SearchBar() {
         history.push("/home")
     }
     const reset = () => {
+        dispatch(Loading())
         dispatch(deleteState())
     }
     return (
