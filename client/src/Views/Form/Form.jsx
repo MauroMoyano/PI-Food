@@ -72,7 +72,7 @@ export default function Form() {
 
     const submitHandler = async (event) => {
         event.preventDefault()
-        const result = await axios.post("http://localhost:3001/api/recipe", form)
+        const result = await axios.post(process.env.REACT_APP_URL + "/api/recipe", form)
         dispatch(createRecipe(result.data))
         history.push('/home')
     }
