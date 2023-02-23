@@ -7,7 +7,7 @@ export default function Nav(){
     return (
         <div className={styled.navBar}>
             <Link to="/home"> <button>Home</button> </Link>
-            <Link to="/form"> <button>Form</button> </Link>
+            <Link to="/form"> <button>Create Recipe</button> </Link>
             <Link to="/About"> <button>About</button> </Link>
             <SearchBar />
         </div>
