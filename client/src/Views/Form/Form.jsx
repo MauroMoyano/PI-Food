@@ -74,8 +74,9 @@ export default function Form() {
 
     const submitHandler = async (event) => {
         event.preventDefault()
+
+        console.log("prueba vercel", REACT_APP_URL)
         const result = await axios.post(REACT_APP_URL + "/api/recipe", form)
-        console.log("prueba vercel", result.data)
         dispatch(createRecipe(result.data))
         history.push('/home')
     }
