@@ -17,7 +17,6 @@ const CardsConteiner = ({foods}) => {
     return (
         <ConDiv>
             {foods?.map((food, index) =>{
-                console.log("foooooddddddddddddddddd", food.image)
                 return <Card
                     key={index}
                     id={food.id}

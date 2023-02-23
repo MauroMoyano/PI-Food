@@ -69,8 +69,8 @@ const Card = (props) => {
                     <NameP>Name: {props.title}</NameP>
                 </Link>
             <DietP>Diets: {
-                props.diet.map(d=>{
-                    return <span> {d} </span>
+                props.diet.map((d, index)=>{
+                    return <span key={index}> {d} </span>
                 })
             } </DietP>
 

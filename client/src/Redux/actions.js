@@ -1,5 +1,4 @@
 import axios from 'axios'
-import * as url from "url";
 
 export const LOADER = "LOADER"
 export const GET_HOME_CARDS = "GET_HOME_CARDS"
@@ -13,26 +12,24 @@ export const ORDER_TITLE = "ORDER_TITLE"
 export const CURRENT_PAGE = "CURRENT_PAGE"
 require("dotenv").config();
 
-const URL = process.env.URL
-console.log(URL)
+const REACT_APP_URL = process.env.REACT_APP_URL
 export const getHomeCards = () => {
     return async function (dispatch) {
-        console.log("la action se ejecuta")
-        const {data} = await axios.get(URL + "/api/home")
+        const {data} = await axios.get(REACT_APP_URL + "/api/home")
         dispatch({type: GET_HOME_CARDS, payload: data})
     }
 }
 
 export const getFoodId = (id) => {
     return async function (dispatch) {
-        const {data} = await axios.get(URL + `/api/recipe/${id}`)
+        const {data} = await axios.get(REACT_APP_URL + `/api/recipe/${id}`)
         dispatch({type: GET_FOOD_ID, payload: data})
     }
 }
 export const putFoodByName = (name) => {
     return async function (dispatch) {
         console.log("actions ---------", name)
-        const {data} = await axios.get(URL + `/api/recipe?name=${name}`)
+        const {data} = await axios.get(REACT_APP_URL + `/api/recipe?name=${name}`)
         console.log("actions ---------data-----", data)
         dispatch({type: PUT_FOOD_BY_NAME, payload: data})
     }

@@ -36,7 +36,7 @@ export default function Home() {
                 <option value="Descendente">Descendente</option>
             </select>
             <select onChange={handleFilter}>
-                <option disabled selected>Title</option>
+                <option disabled selected>Diets</option>
                 {
                     diets.map((d, index) => {
                         return <option value={d} key={index}>{d}</option>

@@ -12,8 +12,7 @@ export default function Paginated() {
     const loader = useSelector(state => state.loader)
     const foods = useSelector(state => state.foods)
     const page = []
-    // const [loader, setLoader] = useState(true)
-    console.log("render")
+
     useEffect(async () => {
 
         if (!foods.length) {
@@ -46,13 +45,14 @@ export default function Paginated() {
         return (<Loader/>
         )
     } else {
-console.log("render")
         return (
             <div>
                 <button onClick={handlePrevClick}> Back</button>
                 {
-                    page.map((p, index) => <button className="btn" onClick={handlePage}
-                                                   value={index}>{index + 1}</button>)
+                    page.map((p, index) => <button className="btn"
+                                                   onClick={handlePage}
+                                                   value={index}
+                                                   key={index} >{index + 1}</button>)
                 }
                 <button onClick={handleNextClick}> Next</button>
                 <CardsConteiner foods={page[currentPage]}/>
@@ -61,41 +61,3 @@ console.log("render")
     }
 
 }
-/*
-import React, { useState } from "react";
-
-const Pagination = ({ itemsPerPage, items }) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const maxPage = Math.ceil(items.length / itemsPerPage);
-
-    const handlePrevClick = () => {
-        setCurrentPage(currentPage - 1);
-    };
-
-    const handleNextClick = () => {
-        setCurrentPage(currentPage + 1);
-    };
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentItems = items.slice(startIndex, endIndex);
-
-    return (
-        <div>
-            <ul>
-                {currentItems.map((item) => (
-                    <li key={item.id}>{item.name}</li>
-                ))}
-            </ul>
-            <button disabled={currentPage === 1} onClick={handlePrevClick}>
-                Prev
-            </button>
-            <button disabled={currentPage === maxPage} onClick={handleNextClick}>
-                Next
-            </button>
-        </div>
-    );
-};
-
-export default Pagination;
-*/

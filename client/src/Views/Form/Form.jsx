@@ -120,9 +120,9 @@ export default function Form() {
             <div className={styled.diets}>
                 <label>Diet Types : </label>
                 {
-                    dietTypes.map(diet => {
+                    dietTypes.map((diet, index) => {
                         return (
-                            <div className={styled.check} key={diet}>
+                            <div className={styled.check} key={index}>
                                 <label>{diet}</label>
                                 <input type="checkbox" name={diet}
                                        value={diet}
