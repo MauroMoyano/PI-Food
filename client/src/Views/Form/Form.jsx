@@ -4,9 +4,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {createRecipe} from "../../Redux/actions";
 import {useHistory} from "react-router-dom";
 import styled from "./Form.module.css"
+require("dotenv").config();
 
 
 export default function Form() {
+    const REACT_APP_URL = process.env.REACT_APP_URL
     const dietTypes = useSelector(state => state.diet)
     const dispatch = useDispatch()
     const history = useHistory()
@@ -72,7 +74,7 @@ export default function Form() {
 
     const submitHandler = async (event) => {
         event.preventDefault()
-        const result = await axios.post(process.env.REACT_APP_URL + "/api/recipe", form)
+        const result = await axios.post(REACT_APP_URL + "/api/recipe", form)
         dispatch(createRecipe(result.data))
         history.push('/home')
     }
