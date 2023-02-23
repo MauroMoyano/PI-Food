@@ -21,7 +21,7 @@ const getHome = async () => {
             }
         })
     }
-    return [...aux, ...obj]
+    return [...aux, ...obj];
 
 }
 
