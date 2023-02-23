@@ -8,7 +8,7 @@ const getHome = async () => {
     let aux = await Recipe.findAll()
     let {data} = await axios.get(`${URLSPOO}?${API_PSW}&addRecipeInformation=true&number=20`)
     const {results} = data
-
+    console.log("dddddddddddddddddddddddddddddd",data)
     let obj = [];
     if (results.length) {
         obj = results.map((element) => {
