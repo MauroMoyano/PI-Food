@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
         }
         res.status(200).json({home, auxDiets});
     } catch (error) {
-        res.status(400).json("Se te quema la olla, anda y volve!")
+        res.status(400).json({error: error.message})
     }
 })
 module.exports = router;
