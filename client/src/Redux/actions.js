@@ -1,4 +1,5 @@
 import axios from 'axios'
+import * as url from "url";
 
 export const LOADER = "LOADER"
 export const GET_HOME_CARDS = "GET_HOME_CARDS"
@@ -13,7 +14,7 @@ export const CURRENT_PAGE = "CURRENT_PAGE"
 require("dotenv").config();
 
 const URL = process.env.URL
-
+console.log(URL)
 export const getHomeCards = () => {
     return async function (dispatch) {
         console.log("la action se ejecuta")
