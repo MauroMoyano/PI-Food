@@ -10,6 +10,7 @@ export const ORDER_RECIPES_HEALTH = "ORDER_RECIPES_HEALTH"
 export const DISH_TYPES = "DISH_TYPES"
 export const ORDER_TITLE = "ORDER_TITLE"
 export const CURRENT_PAGE = "CURRENT_PAGE"
+export const CLEAN_DETAIL = "CLEAN_DETAIL"
 require("dotenv").config();
 
 const REACT_APP_URL = process.env.REACT_APP_URL
@@ -60,4 +61,8 @@ export const currentPageHandler = (value) => {
 
 export const Loading = () => {
     return {type: LOADER}
+}
+
+export const CleanDetail = () => {
+    return {type: CLEAN_DETAIL}
 }

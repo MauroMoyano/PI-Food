@@ -1,4 +1,5 @@
 import {
+    CLEAN_DETAIL,
     CREATE_RECIPE, CURRENT_PAGE,
     DELETE_STATE,
     DISH_TYPES,
@@ -75,6 +76,10 @@ const rootReducer = (state = initialState, action) => {
                 ...state, loader: state.loader
                     ? state.loader = false
                     : state.loader = true
+            }
+        case CLEAN_DETAIL:
+            return {
+                ...state, foodDetail: {}
             }
 
 
